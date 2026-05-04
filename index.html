@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T. Armel Fahlevi | Data Analyst & AI Enthusiast</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6', // blue-500
+                        secondary: '#8b5cf6', // violet-500
+                        dark: '#0f172a', // slate-900
+                        darker: '#020617', // slate-950
+                        light: '#f8fafc', // slate-50
+                        lighter: '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light text-slate-800 dark:bg-darker dark:text-slate-200 transition-colors duration-300 font-sans antialiased relative overflow-x-hidden">
+
+    <!-- Background Blobs -->
+    <div class="blob bg-blue-400 w-96 h-96 rounded-full top-0 left-[-10%]"></div>
+    <div class="blob bg-purple-400 w-96 h-96 rounded-full top-[20%] right-[-10%]"></div>
+    <div class="blob bg-indigo-400 w-[500px] h-[500px] rounded-full bottom-[10%] left-[-20%]"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4" id="navbar">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gradient">TAF.</a>
+
+            <div class="hidden md:flex space-x-8 items-center font-medium">
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+                <a href="#experience" class="hover:text-primary transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+                <a href="#certifications" class="hover:text-primary transition-colors">Certifications</a>
+
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-full bg-slate-200 dark:bg-slate-800 transition-colors hover:bg-slate-300 dark:hover:bg-slate-700">
+                    <i class="fas fa-moon text-slate-800 dark:text-slate-200" id="theme-toggle-icon"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button (simplified for now) -->
+            <div class="md:hidden flex items-center space-x-4">
+                <button id="theme-toggle-mobile" class="p-2 rounded-full bg-slate-200 dark:bg-slate-800 transition-colors">
+                    <i class="fas fa-moon text-slate-800 dark:text-slate-200" id="theme-toggle-icon-mobile"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center pt-20 pb-12">
+            <div class="container mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <p class="text-primary dark:text-blue-400 font-semibold tracking-wider uppercase mb-2">Hello, I am</p>
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4">
+                        T. Armel <br/>
+                        <span class="text-gradient">Fahlevi</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-medium text-slate-600 dark:text-slate-400 mb-6">
+                        Data Analyst & AI Enthusiast
+                    </h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-lg leading-relaxed">
+                        Transforming complex data into actionable insights and exploring the frontiers of Artificial Intelligence to drive strategic decision-making.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-medium hover:shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-1">
+                            Let's Connect
+                        </a>
+                        <a href="#" class="px-8 py-3 rounded-full border-2 border-slate-300 dark:border-slate-700 font-medium hover:border-primary dark:hover:border-primary transition-all flex items-center gap-2">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </div>
+
+                    <div class="flex gap-6 mt-10 text-2xl">
+                        <a href="#" class="text-slate-500 hover:text-primary transition-colors"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-primary transition-colors"><i class="fab fa-github"></i></a>
+                        <a href="mailto:armelfahlevi31@gmail.com" class="text-slate-500 hover:text-primary transition-colors"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="relative animate-on-scroll hidden md:block">
+                    <!-- Decorative element replacing an actual photo for now -->
+                    <div class="w-full max-w-md mx-auto aspect-square rounded-full glass-card flex items-center justify-center relative floating">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full"></div>
+                        <i class="fas fa-database text-9xl text-slate-300 dark:text-slate-700"></i>
+
+                        <!-- Floating badges -->
+                        <div class="absolute top-10 right-10 glass-card p-4 rounded-2xl flex items-center gap-3">
+                            <i class="fab fa-python text-3xl text-blue-500"></i>
+                            <span class="font-bold">Python</span>
+                        </div>
+                        <div class="absolute bottom-20 left-0 glass-card p-4 rounded-2xl flex items-center gap-3">
+                            <i class="fas fa-chart-pie text-3xl text-green-500"></i>
+                            <span class="font-bold">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 relative">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="text-gradient">Me</span></h2>
+                    <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h3 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                            <i class="fas fa-user-tie text-primary"></i> Professional Summary
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                            A graduate in Informatics with a strong interest in data analysis, AI, and operational management. Experienced in data-driven decision making, problem-solving, and building insights using Excel, SQL, and Python.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            I thrive in both independent and team environments, bringing strong communication skills and adaptability to every project I undertake. Based in Indonesia, I'm passionate about leveraging technology to solve real-world problems.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl h-full">
+                        <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                            <i class="fas fa-graduation-cap text-secondary"></i> Education
+                        </h3>
+                        <div class="relative pl-8 border-l-2 border-slate-200 dark:border-slate-700">
+                            <div class="absolute w-4 h-4 bg-secondary rounded-full -left-[9px] top-1"></div>
+                            <h4 class="text-xl font-bold">Informatics</h4>
+                            <p class="text-primary font-medium mb-2">Universitas Samudra</p>
+                            <p class="text-slate-600 dark:text-slate-400 mb-2">GPA: 3.61</p>
+                            <p class="text-sm text-slate-500">Graduated with a strong foundation in computer science, specializing in data structures, algorithms, and artificial intelligence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-slate-50 dark:bg-slate-900/50">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical <span class="text-gradient">Skills</span></h2>
+                    <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 animate-on-scroll">
+                    <!-- Skill Item -->
+                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
+                        <i class="fas fa-chart-line text-4xl text-blue-500 mb-4"></i>
+                        <h4 class="font-semibold">Data Analysis</h4>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
+                        <i class="fas fa-chart-bar text-4xl text-indigo-500 mb-4"></i>
+                        <h4 class="font-semibold">Data Visualization</h4>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
+                        <i class="fas fa-database text-4xl text-blue-600 mb-4"></i>
+                        <h4 class="font-semibold">SQL</h4>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
+                        <i class="fab fa-python text-4xl text-yellow-500 mb-4"></i>
+                        <h4 class="font-semibold">Python</h4>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
+                        <i class="fas fa-robot text-4xl text-purple-500 mb-4"></i>
+                        <h4 class="font-semibold">Generative AI</h4>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
+                        <i class="fas fa-file-excel text-4xl text-green-600 mb-4"></i>
+                        <h4 class="font-semibold">Microsoft Excel</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 relative">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Professional <span class="text-gradient">Experience</span></h2>
+                    <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="max-w-4xl mx-auto space-y-8 animate-on-scroll">
+
+                    <!-- Experience 1 -->
+                    <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-secondary"></div>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">Freelance Data Analyst</h3>
+                                <p class="text-primary font-medium">Spotify Project</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-slate-600 dark:text-slate-400 list-disc list-inside">
+                            <li>Analyzed a comprehensive dataset of 8,700+ songs.</li>
+                            <li>Built interactive dashboards using Excel PivotTables.</li>
+                            <li>Identified trends in artist popularity and followers (2020–2025).</li>
+                            <li>Delivered actionable insights for strategic decision making.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Experience 2 -->
+                    <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-secondary"></div>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">Game AI Research Project</h3>
+                                <p class="text-primary font-medium">NPC Behavior Analyst</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-slate-600 dark:text-slate-400 list-disc list-inside">
+                            <li>Analyzed NPC behavior using Finite State Machine (FSM) architecture.</li>
+                            <li>Processed and visualized complex behavior data using Excel.</li>
+                            <li>Created detailed comparison graphs for state transitions to optimize game logic.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Experience 3 -->
+                    <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-secondary"></div>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">Sound Engineer</h3>
+                                <p class="text-primary font-medium">Game Development</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-slate-600 dark:text-slate-400 list-disc list-inside">
+                            <li>Designed and integrated immersive sound effects into game environments.</li>
+                            <li>Collaborated closely with developers and designers to ensure audio coherence.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-slate-50 dark:bg-slate-900/50">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="text-gradient">Projects</span></h2>
+                    <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10 animate-on-scroll">
+
+                    <!-- Project 1 -->
+                    <div class="glass-card rounded-3xl overflow-hidden group">
+                        <div class="h-48 bg-gradient-to-br from-green-400/20 to-blue-500/20 flex items-center justify-center relative overflow-hidden">
+                            <i class="fab fa-spotify text-6xl text-green-500 z-10 group-hover:scale-110 transition-transform duration-500"></i>
+                            <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">Excel</span>
+                                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">Data Analysis</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Spotify Data Analysis Dashboard</h3>
+                            <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-3">
+                                A comprehensive dashboard built to analyze over 8,700 songs. Visualizes artist popularity trends, follower growth predictions (2020-2025), and key audio features using advanced Excel PivotTables.
+                            </p>
+                            <a href="#" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary transition-colors">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="glass-card rounded-3xl overflow-hidden group">
+                        <div class="h-48 bg-gradient-to-br from-purple-400/20 to-pink-500/20 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-gamepad text-6xl text-purple-500 z-10 group-hover:scale-110 transition-transform duration-500"></i>
+                            <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">AI / FSM</span>
+                                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400">Game Dev</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">NPC Behavior Analysis (FSM)</h3>
+                            <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-3">
+                                Research project analyzing Non-Player Character behavior using Finite State Machines. Involved processing state transition data and creating visualizations to compare and optimize AI logic in gaming environments.
+                            </p>
+                            <a href="#" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary transition-colors">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-20 relative">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Licenses & <span class="text-gradient">Certifications</span></h2>
+                    <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 animate-on-scroll">
+                    <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-google text-blue-600 dark:text-blue-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Google Cloud Dataplex</h4>
+                            <p class="text-sm text-slate-500">Google</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-google text-blue-600 dark:text-blue-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Vertex AI Gemini API</h4>
+                            <p class="text-sm text-slate-500">Google</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-google text-blue-600 dark:text-blue-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">BigQuery ML</h4>
+                            <p class="text-sm text-slate-500">Google</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-slate-50 dark:bg-slate-900/50">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="max-w-4xl mx-auto glass-card rounded-3xl p-8 md:p-12 animate-on-scroll">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="text-gradient">Touch</span></h2>
+                        <p class="text-slate-600 dark:text-slate-400">Interested in working together or have a question? Feel free to reach out.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-500">Email</p>
+                                    <a href="mailto:armelfahlevi31@gmail.com" class="font-semibold hover:text-primary transition-colors">armelfahlevi31@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-500">Location</p>
+                                    <p class="font-semibold">Indonesia</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="space-y-4">
+                            <div>
+                                <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-primary dark:focus:border-primary transition-colors">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-primary dark:focus:border-primary transition-colors">
+                            </div>
+                            <div>
+                                <textarea rows="4" placeholder="Your Message" class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-primary dark:focus:border-primary transition-colors resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg transition-shadow">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-200 dark:border-slate-800 relative z-10">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+                &copy; 2023 T. Armel Fahlevi. All rights reserved.
+            </p>
+            <div class="flex gap-4">
+                <a href="#" class="text-slate-400 hover:text-primary transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="#" class="text-slate-400 hover:text-primary transition-colors"><i class="fab fa-github text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
