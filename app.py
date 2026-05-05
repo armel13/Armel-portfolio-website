@@ -4,7 +4,7 @@ import uuid
 from flask import Flask, render_template, request, flash, redirect, url_for
 
 app = Flask(__name__)
-app.secret_key = 'super_secret_key' # Required for flash messages
+app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'default_secret_key_for_dev') # Required for flash messages
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024 # 5MB max-limit for all uploads to be safe, CV specifically is 5MB
 

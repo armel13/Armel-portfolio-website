@@ -5,17 +5,26 @@ const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
 const themeToggleIconMobile = document.getElementById('theme-toggle-icon-mobile');
 
 function updateThemeIcons(isDark) {
-    if (isDark) {
-        themeToggleIcon?.classList.remove('fa-moon');
-        themeToggleIcon?.classList.add('fa-sun');
-        themeToggleIconMobile?.classList.remove('fa-moon');
-        themeToggleIconMobile?.classList.add('fa-sun');
-    } else {
-        themeToggleIcon?.classList.remove('fa-sun');
-        themeToggleIcon?.classList.add('fa-moon');
-        themeToggleIconMobile?.classList.remove('fa-sun');
-        themeToggleIconMobile?.classList.add('fa-moon');
-    }
+    const icons = [themeToggleIcon, themeToggleIconMobile];
+    icons.forEach(icon => {
+        if (!icon) return;
+
+        // Add a rotation animation class
+        icon.classList.add('rotate-180', 'opacity-0');
+
+        setTimeout(() => {
+            if (isDark) {
+                icon.classList.remove('fa-sun', 'text-yellow-400');
+                icon.classList.add('fa-moon', 'text-slate-400'); // Dim
+                icon.parentElement.classList.remove('shadow-[0_0_15px_rgba(250,204,21,0.3)]');
+            } else {
+                icon.classList.remove('fa-moon', 'text-slate-400');
+                icon.classList.add('fa-sun', 'text-yellow-400'); // Active
+                icon.parentElement.classList.add('shadow-[0_0_15px_rgba(250,204,21,0.3)]');
+            }
+            icon.classList.remove('rotate-180', 'opacity-0');
+        }, 150); // half of duration
+    });
 }
 
 // Check for saved theme preference or use system preference
@@ -114,5 +123,41 @@ function previewFile(input, previewId) {
             document.getElementById('photo-preview-wrapper').classList.add('hidden');
             document.getElementById('photo-preview-container').classList.remove('hidden');
         }
+    }
+}
+
+// Toggle Edit Mode in Admin Settings
+function toggleEditMode() {
+    const profileDisplay = document.getElementById('profile-display');
+    const uploadForm = document.getElementById('upload-form');
+
+    if (uploadForm.classList.contains('hidden')) {
+        // Hide profile, show form
+        profileDisplay.classList.add('opacity-0');
+        setTimeout(() => {
+            profileDisplay.classList.add('hidden', 'absolute', 'inset-0', 'pointer-events-none');
+
+            uploadForm.classList.remove('hidden', 'absolute', 'inset-0', 'pointer-events-none');
+            uploadForm.classList.add('relative');
+
+            // Trigger reflow for animation
+            void uploadForm.offsetWidth;
+            uploadForm.classList.remove('opacity-0');
+            uploadForm.classList.add('opacity-100');
+        }, 500);
+    } else {
+        // Hide form, show profile
+        uploadForm.classList.remove('opacity-100');
+        uploadForm.classList.add('opacity-0');
+
+        setTimeout(() => {
+            uploadForm.classList.add('hidden', 'absolute', 'inset-0', 'pointer-events-none');
+            uploadForm.classList.remove('relative');
+
+            profileDisplay.classList.remove('hidden', 'absolute', 'inset-0', 'pointer-events-none');
+            // Trigger reflow
+            void profileDisplay.offsetWidth;
+            profileDisplay.classList.remove('opacity-0');
+        }, 500);
     }
 }

@@ -39,7 +39,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body class="bg-dark text-slate-200 transition-colors duration-300 font-sans antialiased relative overflow-x-hidden dark">
+<body class="bg-[#ffffff] text-[#0f172a] dark:bg-[#0f172a] dark:text-white transition-colors duration-300 ease-in-out font-sans antialiased relative overflow-x-hidden">
 
     <!-- Background Blobs -->
     <div class="blob bg-blue-400 w-96 h-96 rounded-full top-0 left-[-10%]"></div>
@@ -59,15 +59,15 @@
                 <a href="#certifications" class="hover:text-primary transition-colors">Certifications</a>
 
                 <!-- Dark Mode Toggle -->
-                <button id="theme-toggle" class="p-2 rounded-full bg-slate-200 dark:bg-slate-800 transition-colors hover:bg-slate-300 dark:hover:bg-slate-700">
-                    <i class="fas fa-moon text-slate-800 dark:text-slate-200" id="theme-toggle-icon"></i>
+                <button id="theme-toggle" class="p-2 rounded-full bg-slate-200 dark:bg-slate-800 transition-all duration-300 ease-in-out hover:bg-slate-300 dark:hover:bg-slate-700 w-10 h-10 flex items-center justify-center">
+                    <i class="fas fa-moon text-slate-800 dark:text-slate-200 transition-transform duration-300" id="theme-toggle-icon"></i>
                 </button>
             </div>
 
             <!-- Mobile Menu Button (simplified for now) -->
             <div class="md:hidden flex items-center space-x-4">
-                <button id="theme-toggle-mobile" class="p-2 rounded-full bg-slate-200 dark:bg-slate-800 transition-colors">
-                    <i class="fas fa-moon text-slate-800 dark:text-slate-200" id="theme-toggle-icon-mobile"></i>
+                <button id="theme-toggle-mobile" class="p-2 rounded-full bg-slate-200 dark:bg-slate-800 transition-all duration-300 ease-in-out w-10 h-10 flex items-center justify-center">
+                    <i class="fas fa-moon text-slate-800 dark:text-slate-200 transition-transform duration-300" id="theme-toggle-icon-mobile"></i>
                 </button>
             </div>
         </div>
@@ -398,8 +398,36 @@
                     <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
                 </div>
 
-                <div class="max-w-2xl mx-auto glass-card rounded-3xl p-8 md:p-12 animate-on-scroll">
-                    <form action="/upload" method="post" enctype="multipart/form-data" class="space-y-8" id="upload-form">
+                <div class="max-w-2xl mx-auto glass-card rounded-3xl p-8 md:p-12 animate-on-scroll relative overflow-hidden">
+
+                    <!-- Display Profile Section (Shown if data exists) -->
+                    <div id="profile-display" class="flex flex-col items-center justify-center space-y-6 transition-opacity duration-500 {% if not profile_photo and not cv_path %}hidden{% else %}opacity-100{% endif %}">
+                        {% if profile_photo %}
+                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white/10 shadow-xl hover:scale-105 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all duration-300">
+                            <img src="{{ url_for('static', filename=profile_photo) }}" alt="Profile Photo" class="w-full h-full object-cover">
+                        </div>
+                        {% endif %}
+
+                        {% if cv_path %}
+                        <a href="{{ url_for('static', filename=cv_path) }}" download class="bg-gradient-to-r from-[#3B82F6] to-[#6366F1] hover:scale-105 hover:shadow-[0_0_15px_rgba(59,130,246,0.6)] transition-all duration-300 rounded-full px-8 py-3 text-white font-medium flex items-center gap-2">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                        {% endif %}
+
+                        <button onclick="toggleEditMode()" class="mt-4 text-sm font-medium text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors flex items-center gap-2">
+                            <i class="fas fa-edit"></i> Edit / Change
+                        </button>
+                    </div>
+
+                    <!-- Upload Form (Hidden if data exists) -->
+                    <form action="/upload" method="post" enctype="multipart/form-data" class="space-y-8 transition-opacity duration-500 {% if profile_photo or cv_path %}hidden opacity-0 absolute inset-0 pointer-events-none p-8 md:p-12{% else %}opacity-100 relative{% endif %}" id="upload-form">
+
+                        <div class="flex justify-between items-center mb-4 {% if not profile_photo and not cv_path %}hidden{% endif %}">
+                            <h3 class="text-xl font-bold">Update Files</h3>
+                            <button type="button" onclick="toggleEditMode()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                                <i class="fas fa-times text-xl"></i>
+                            </button>
+                        </div>
 
                         <!-- Photo Upload -->
                         <div class="space-y-4">
