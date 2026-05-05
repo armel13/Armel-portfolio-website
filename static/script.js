@@ -72,3 +72,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll('.animate-on-scroll');
     animateElements.forEach(el => observer.observe(el));
 });
+
+// File upload preview logic
+function previewFile(input, previewId) {
+    const file = input.files[0];
+    const isPhoto = previewId === 'photo-preview';
+    const filenameSpan = document.getElementById(isPhoto ? 'photo-filename' : 'cv-filename');
+
+    if (file) {
+        filenameSpan.textContent = file.name;
+
+        // Client-side validation
+        const maxSize = isPhoto ? 2 * 1024 * 1024 : 5 * 1024 * 1024; // 2MB or 5MB
+        if (file.size > maxSize) {
+            alert(`File size exceeds the limit of ${isPhoto ? '2MB' : '5MB'}.`);
+            input.value = ''; // Clear input
+            filenameSpan.textContent = 'Drag and drop or click to browse';
+            if (isPhoto) {
+                document.getElementById('photo-preview-wrapper').classList.add('hidden');
+                document.getElementById('photo-preview-container').classList.remove('hidden');
+            }
+            return;
+        }
+
+        if (isPhoto) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewWrapper = document.getElementById('photo-preview-wrapper');
+                const previewImg = document.getElementById('photo-preview');
+                const container = document.getElementById('photo-preview-container');
+
+                previewImg.src = e.target.result;
+                previewWrapper.classList.remove('hidden');
+                container.classList.add('hidden'); // Hide the icon/text when image is shown
+            }
+            reader.readAsDataURL(file);
+        }
+    } else {
+        filenameSpan.textContent = 'Drag and drop or click to browse';
+        if (isPhoto) {
+            document.getElementById('photo-preview-wrapper').classList.add('hidden');
+            document.getElementById('photo-preview-container').classList.remove('hidden');
+        }
+    }
+}
