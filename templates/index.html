@@ -49,7 +49,16 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4" id="navbar">
         <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gradient">TAF.</a>
+            <div class="flex items-center gap-3">
+                {% if profile_photo %}
+                <img src="{{ url_for('static', filename=profile_photo) }}" alt="Profile Photo" class="w-10 h-10 rounded-full object-cover border border-slate-200 dark:border-slate-700">
+                {% else %}
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary/20 to-secondary/20 flex items-center justify-center border border-slate-200 dark:border-slate-700">
+                    <span class="text-sm font-bold text-slate-800 dark:text-white">TAF</span>
+                </div>
+                {% endif %}
+                <a href="#" class="text-2xl font-bold text-gradient">TAF.</a>
+            </div>
 
             <div class="hidden md:flex space-x-8 items-center font-medium">
                 <a href="#about" class="hover:text-primary transition-colors">About</a>
@@ -134,9 +143,9 @@
                         <img src="{{ url_for('static', filename=profile_photo) }}" alt="Profile Photo" class="w-full h-full object-cover rounded-full hover:scale-110 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300 z-10 relative">
                         {% else %}
                         <!-- Decorative element replacing an actual photo for now -->
-                        <div class="w-full h-full rounded-full glass-card flex items-center justify-center relative floating hover:scale-110 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300">
+                        <div class="w-full h-full rounded-full glass-card flex items-center justify-center relative floating hover:scale-105 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all duration-300 group">
                             <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full"></div>
-                            <i class="fas fa-database text-9xl text-slate-300 dark:text-slate-700"></i>
+                            <span class="text-7xl font-bold text-slate-800 dark:text-white z-10 group-hover:scale-110 transition-transform duration-300">TAF</span>
                         </div>
                         {% endif %}
 
@@ -162,16 +171,13 @@
                     <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
+                <div class="grid md:grid-cols-2 gap-12 items-stretch animate-on-scroll">
                     <div class="glass-card p-8 rounded-3xl">
                         <h3 class="text-2xl font-semibold mb-4 flex items-center gap-3">
                             <i class="fas fa-user-tie text-primary"></i> Professional Summary
                         </h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                            A graduate in Informatics with a strong interest in data analysis, AI, and operational management. Experienced in data-driven decision making, problem-solving, and building insights using Excel, SQL, and Python.
-                        </p>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                            I thrive in both independent and team environments, bringing strong communication skills and adaptability to every project I undertake. Based in Indonesia, I'm passionate about leveraging technology to solve real-world problems.
+                            I am an Informatics graduate with strong interest in data analysis, AI, and operational management. I have experience in data-driven decision making, problem solving, and building insights using Excel, SQL, and Python. I am adaptable, have strong communication skills, and can work both independently and in teams.
                         </p>
                     </div>
 
@@ -179,12 +185,17 @@
                         <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
                             <i class="fas fa-graduation-cap text-secondary"></i> Education
                         </h3>
+                        <div class="mb-6 relative pl-8 border-l-2 border-slate-200 dark:border-slate-700">
+                            <div class="absolute w-4 h-4 bg-secondary rounded-full -left-[9px] top-1"></div>
+                            <h4 class="font-bold text-lg">Informatics</h4>
+                            <p class="text-primary font-medium">Universitas Samudra</p>
+                            <p class="text-slate-600 dark:text-slate-400">GPA: 3.61</p>
+                        </div>
                         <div class="relative pl-8 border-l-2 border-slate-200 dark:border-slate-700">
                             <div class="absolute w-4 h-4 bg-secondary rounded-full -left-[9px] top-1"></div>
-                            <h4 class="text-xl font-bold">Informatics</h4>
-                            <p class="text-primary font-medium mb-2">Universitas Samudra</p>
-                            <p class="text-slate-600 dark:text-slate-400 mb-2">GPA: 3.61</p>
-                            <p class="text-sm text-slate-500">Graduated with a strong foundation in computer science, specializing in data structures, algorithms, and artificial intelligence.</p>
+                            <h4 class="font-bold text-lg">Senior High School</h4>
+                            <p class="text-primary font-medium">SMA Negeri 1 Langsa</p>
+                            <p class="text-slate-600 dark:text-slate-400">Major: Mathematics and Natural Sciences (MIA)</p>
                         </div>
                     </div>
                 </div>
@@ -192,37 +203,33 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-20 bg-slate-50 dark:bg-slate-900/50">
+        <section id="skills" class="py-20 bg-slate-900/50">
             <div class="container mx-auto px-6 md:px-12">
                 <div class="text-center mb-16 animate-on-scroll">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical <span class="text-gradient">Skills</span></h2>
                     <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 animate-on-scroll">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 animate-on-scroll">
                     <!-- Skill Item -->
-                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
-                        <i class="fas fa-chart-line text-4xl text-blue-500 mb-4"></i>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300 group">
+                        <i class="fas fa-chart-line text-4xl text-blue-500 group-hover:text-blue-400 transition-colors mb-4"></i>
                         <h4 class="font-semibold">Data Analysis</h4>
                     </div>
-                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
-                        <i class="fas fa-chart-bar text-4xl text-indigo-500 mb-4"></i>
-                        <h4 class="font-semibold">Data Visualization</h4>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
-                        <i class="fas fa-database text-4xl text-blue-600 mb-4"></i>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300 group">
+                        <i class="fas fa-database text-4xl text-blue-600 group-hover:text-blue-500 transition-colors mb-4"></i>
                         <h4 class="font-semibold">SQL</h4>
                     </div>
-                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
-                        <i class="fab fa-python text-4xl text-yellow-500 mb-4"></i>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300 group">
+                        <i class="fab fa-python text-4xl text-yellow-500 group-hover:text-yellow-400 transition-colors mb-4"></i>
                         <h4 class="font-semibold">Python</h4>
                     </div>
-                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
-                        <i class="fas fa-robot text-4xl text-purple-500 mb-4"></i>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300 group">
+                        <i class="fas fa-robot text-4xl text-purple-500 group-hover:text-purple-400 transition-colors mb-4"></i>
                         <h4 class="font-semibold">Generative AI</h4>
                     </div>
-                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300">
-                        <i class="fas fa-file-excel text-4xl text-green-600 mb-4"></i>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300 group">
+                        <i class="fas fa-file-excel text-4xl text-green-600 group-hover:text-green-500 transition-colors mb-4"></i>
                         <h4 class="font-semibold">Microsoft Excel</h4>
                     </div>
                 </div>
@@ -244,31 +251,15 @@
                         <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-secondary"></div>
                         <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
                             <div>
-                                <h3 class="text-2xl font-bold">Freelance Data Analyst</h3>
-                                <p class="text-primary font-medium">Spotify Project</p>
+                                <h3 class="text-2xl font-bold">Part-Time Data Processing Staff</h3>
+                                <p class="text-primary font-medium">Kantor Geuchik Matang Seulimeng</p>
                             </div>
                         </div>
                         <ul class="space-y-2 text-slate-600 dark:text-slate-400 list-disc list-inside">
-                            <li>Analyzed a comprehensive dataset of 8,700+ songs.</li>
-                            <li>Built interactive dashboards using Excel PivotTables.</li>
-                            <li>Identified trends in artist popularity and followers (2020–2025).</li>
-                            <li>Delivered actionable insights for strategic decision making.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Experience 2 -->
-                    <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
-                        <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-secondary"></div>
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold">Game AI Research Project</h3>
-                                <p class="text-primary font-medium">NPC Behavior Analyst</p>
-                            </div>
-                        </div>
-                        <ul class="space-y-2 text-slate-600 dark:text-slate-400 list-disc list-inside">
-                            <li>Analyzed NPC behavior using Finite State Machine (FSM) architecture.</li>
-                            <li>Processed and visualized complex behavior data using Excel.</li>
-                            <li>Created detailed comparison graphs for state transitions to optimize game logic.</li>
+                            <li>Processed regional salary data</li>
+                            <li>Processed flood disaster data</li>
+                            <li>Cleaned datasets</li>
+                            <li>Supported data analysis tasks</li>
                         </ul>
                     </div>
 
@@ -347,50 +338,65 @@
             </div>
         </section>
 
-        <!-- Certifications Section -->
+        <!-- Training & Achievement Section -->
         <section id="certifications" class="py-20 relative">
             <div class="container mx-auto px-6 md:px-12">
                 <div class="text-center mb-16 animate-on-scroll">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Licenses & <span class="text-gradient">Certifications</span></h2>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Training, Achievements & <span class="text-gradient">Organization</span></h2>
                     <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-6 animate-on-scroll">
-                    <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-                            <i class="fab fa-google text-blue-600 dark:text-blue-400 text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">Google Cloud Dataplex</h4>
-                            <p class="text-sm text-slate-500">Google</p>
+                <div class="grid md:grid-cols-2 gap-8 animate-on-scroll">
+                    <!-- Training -->
+                    <div class="glass-card p-8 rounded-3xl h-full">
+                        <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                            <i class="fas fa-certificate text-secondary"></i> Training
+                        </h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-lg leading-tight">Teknologi Informasi Dan Komunikasi — Belajar Penggunaan Generative AI</h4>
+                                <p class="text-primary font-medium mt-1">Dicoding</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg leading-tight">Teknologi Informasi Dan Komunikasi — AI Praktis untuk Produktivitas</h4>
+                                <p class="text-primary font-medium mt-1">Dicoding</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg leading-tight">Teknologi Informasi Dan Komunikasi — Belajar Machine Learning untuk Pemula</h4>
+                                <p class="text-primary font-medium mt-1">Dicoding</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-                            <i class="fab fa-google text-blue-600 dark:text-blue-400 text-xl"></i>
+                    <div class="space-y-8 h-full">
+                        <!-- Achievement -->
+                        <div class="glass-card p-8 rounded-3xl">
+                            <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                                <i class="fas fa-trophy text-yellow-500"></i> Achievement
+                            </h3>
+                            <div>
+                                <h4 class="font-bold text-lg">Bronze Medalist</h4>
+                                <p class="text-primary font-medium mt-1">Math And Real Science Competition (MARS)</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">Vertex AI Gemini API</h4>
-                            <p class="text-sm text-slate-500">Google</p>
-                        </div>
-                    </div>
 
-                    <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-                            <i class="fab fa-google text-blue-600 dark:text-blue-400 text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">BigQuery ML</h4>
-                            <p class="text-sm text-slate-500">Google</p>
+                        <!-- Organization -->
+                        <div class="glass-card p-8 rounded-3xl">
+                            <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                                <i class="fas fa-users text-green-500"></i> Organization
+                            </h3>
+                            <div>
+                                <h4 class="font-bold text-lg">HIMATIF UNSAM</h4>
+                                <p class="text-primary font-medium mt-1">Position: Ketua Divisi Keagamaan</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <!-- Admin Settings Section (Upload Form) -->
+        {% if session.get('admin') %}
         <section id="admin-settings" class="py-20 relative">
             <div class="container mx-auto px-6 md:px-12">
                 <div class="text-center mb-16 animate-on-scroll">
@@ -464,9 +470,13 @@
                             Save Changes
                         </button>
                     </form>
+                    <div class="mt-8 text-center">
+                        <a href="/logout" class="text-sm text-red-400 hover:text-red-500 transition-colors">Log out of Admin</a>
+                    </div>
                 </div>
             </div>
         </section>
+        {% endif %}
 
         <!-- Contact Section -->
         <section id="contact" class="py-20 bg-slate-900/50">

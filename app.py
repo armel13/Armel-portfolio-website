@@ -1,7 +1,7 @@
 import os
 import json
 import uuid
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, request, flash, redirect, url_for, session
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'default_secret_key_for_dev') # Required for flash messages
@@ -38,8 +38,30 @@ def index():
     cv_path = data.get('cv_path')
     return render_template('index.html', profile_photo=profile_photo, cv_path=cv_path)
 
+@app.route('/admin', methods=['GET', 'POST'])
+def admin_login():
+    if request.method == 'POST':
+        password = request.form.get('password')
+        if password == os.environ.get('ADMIN_PASSWORD', 'admin123'):
+            session['admin'] = True
+            flash('Logged in as admin successfully.', 'success')
+            return redirect(url_for('index'))
+        else:
+            flash('Invalid password.', 'error')
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('admin', None)
+    flash('Logged out successfully.', 'success')
+    return redirect(url_for('index'))
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    if not session.get('admin'):
+        flash('Unauthorized access.', 'error')
+        return redirect(url_for('index'))
+
     # Load existing data to preserve unchanged fields
     data = load_data()
 

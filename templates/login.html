@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | T. Armel Fahlevi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="bg-[#0f172a] text-white font-sans h-screen flex items-center justify-center relative overflow-hidden">
+    <!-- Background Blobs -->
+    <div class="blob bg-blue-500 w-96 h-96 rounded-full absolute top-[-10%] left-[-10%]"></div>
+    <div class="blob bg-purple-500 w-96 h-96 rounded-full absolute bottom-[-10%] right-[-10%]"></div>
+
+    <!-- Flash Messages -->
+    <div class="fixed top-10 right-6 z-50 flex flex-col gap-2">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="px-6 py-4 rounded-xl shadow-lg border-l-4 {% if category == 'success' %}border-green-500 bg-green-900/30 text-green-400{% else %}border-red-500 bg-red-900/30 text-red-400{% endif %} flex items-center justify-between gap-4" style="min-width: 300px;">
+                        <span>{{ message }}</span>
+                        <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-white"><i class="fas fa-times"></i></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="glass-card p-10 rounded-3xl w-full max-w-md relative z-10 text-center">
+        <h2 class="text-3xl font-bold mb-6">Admin <span class="text-gradient">Login</span></h2>
+
+        <form action="/admin" method="post" class="space-y-6">
+            <div>
+                <input type="password" name="password" placeholder="Enter Admin Password" required class="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700 focus:outline-none focus:border-blue-500 transition-colors text-white">
+            </div>
+            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all transform hover:-translate-y-1">
+                Login
+            </button>
+        </form>
+        <a href="/" class="block mt-6 text-sm text-slate-400 hover:text-blue-400 transition-colors">← Back to Portfolio</a>
+    </div>
+</body>
+</html>
